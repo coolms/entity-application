@@ -15,7 +15,7 @@ use ReflectionProperty;
 use ReflectionUnionType;
 
 /**
- * Phase X-2.5 — Reflection-based `EntityFieldDescriptorInterface`.
+ * Reflection-based `EntityFieldDescriptorInterface`.
  *
  * Walks the entity class's properties (including those inherited
  * from parents and traits) and emits one `FieldDescriptor` per

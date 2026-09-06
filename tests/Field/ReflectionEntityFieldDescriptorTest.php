@@ -10,7 +10,7 @@ use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Phase X-2.5 — Reflection-based EntityFieldDescriptor.
+ * Reflection-based EntityFieldDescriptor.
  */
 final class ReflectionEntityFieldDescriptorTest extends TestCase
 {
