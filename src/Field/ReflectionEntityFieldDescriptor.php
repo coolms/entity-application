@@ -24,14 +24,14 @@ use ReflectionUnionType;
  * `filterOperators` argument or, when null, a sensible default
  * derived from the PHP property type:
  *
- *   string                      → eq, ne, cn (LIKE %x%)
- *   int|float                   → eq, ne, lt, le, gt, ge
- *   bool                        → eq, ne
- *   DateTimeInterface           → eq, ne, lt, le, gt, ge
- *   BackedEnum                  → eq, ne, in, ni
- *   (anything else)             → eq, ne (conservative fallback)
+ *   string                      -> eq, ne, cn (LIKE %x%)
+ *   int|float                   -> eq, ne, lt, le, gt, ge
+ *   bool                        -> eq, ne
+ *   DateTimeInterface           -> eq, ne, lt, le, gt, ge
+ *   BackedEnum                  -> eq, ne, in, ni
+ *   (anything else)             -> eq, ne (conservative fallback)
  *
- * Cached per-FQCN — Reflection isn't free and the wizard endpoint
+ * Cached per-FQCN -- Reflection isn't free and the wizard endpoint
  * is consulted repeatedly during interactive filter editing.
  */
 final class ReflectionEntityFieldDescriptor implements EntityFieldDescriptorInterface
@@ -57,7 +57,7 @@ final class ReflectionEntityFieldDescriptor implements EntityFieldDescriptorInte
             }
             /** @var FieldMeta $meta */
             $meta = $attrs[0]->newInstance();
-            // private:true means "internal — never expose" (persistence
+            // private:true means "internal -- never expose" (persistence
             // bookkeeping columns, blame fields, etc.). Honour the
             // same opt-out the FieldMetaReader pipeline already
             // respects.
@@ -98,7 +98,7 @@ final class ReflectionEntityFieldDescriptor implements EntityFieldDescriptorInte
         }
 
         // Union types: pick the first non-null named type as the
-        // representative — good enough for wire-type purposes.
+        // representative -- good enough for wire-type purposes.
         if ($type instanceof ReflectionUnionType) {
             foreach ($type->getTypes() as $candidate) {
                 if ($candidate instanceof ReflectionNamedType && 'null' !== $candidate->getName()) {

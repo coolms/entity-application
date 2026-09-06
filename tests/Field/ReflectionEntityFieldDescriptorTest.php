@@ -19,8 +19,8 @@ final class ReflectionEntityFieldDescriptorTest extends TestCase
         $descriptors = new ReflectionEntityFieldDescriptor()->describe(StubEntity::class);
 
         $names = array_map(fn ($d) => $d->field, $descriptors);
-        // `internal` is private:true → skipped.
-        // `notAnnotated` has no FieldMeta → skipped.
+        // `internal` is private:true -> skipped.
+        // `notAnnotated` has no FieldMeta -> skipped.
         self::assertSame(['name', 'count', 'active', 'createdAt', 'colour'], $names);
     }
 
@@ -114,7 +114,7 @@ final class ReflectionEntityFieldDescriptorTest extends TestCase
     }
 }
 
-// ─── Fixtures ────────────────────────────────────────────────────────────────
+// --- Fixtures ----------------------------------------------------------------
 
 enum StubColour: string
 {
@@ -139,11 +139,11 @@ final class StubEntity
     #[FieldMeta(filterable: true, enumClass: StubColour::class)]
     public ?StubColour $colour = null;
 
-    /** Skipped — private:true. */
+    /** Skipped -- private:true. */
     #[FieldMeta(private: true)]
     public string $internal = '';
 
-    /** Skipped — no #[FieldMeta]. */
+    /** Skipped -- no #[FieldMeta]. */
     public string $notAnnotated = '';
 }
 

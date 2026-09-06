@@ -15,7 +15,7 @@ use Symfony\Component\Uid\Uuid;
 use Throwable;
 
 /**
- * Reflection-based default extractor — works against any entity
+ * Reflection-based default extractor -- works against any entity
  * without per-type wiring. Field discovery rules:
  *
  *  - **Public properties** read directly (PHP 8.5 property hooks
@@ -23,13 +23,13 @@ use Throwable;
  *  - **Getter methods** (`getName()`, `isActive()`, `hasFoo()`)
  *    invoked with no args; the resulting property name strips the
  *    prefix and lower-cases the first character (`getDisplayName`
- *    → `displayName`).
+ *    -> `displayName`).
  *  - **`$fields` allow-list** respected when non-null.
  *  - **Uuid / DateTimeInterface** flattened to string forms
  *    (`->toRfc4122()`, `->format(ATOM)`).
  *  - **Stringable values** flattened via `(string) $value`.
  *  - **Nested arrays/scalars** passed through unchanged.
- *  - **Non-scalar/non-stringable objects** skipped — recursion
+ *  - **Non-scalar/non-stringable objects** skipped -- recursion
  *    risk + serialization risk. Modules that need deeper exposure
  *    ship a custom resolver.
  *
