@@ -22,7 +22,10 @@ use Stringable;
  */
 final class EntityFindWidgetRenderer implements WidgetRendererInterface
 {
-    public string $key { get => 'entity:find'; }
+    /** Registry key. A constant so WidgetRegistryPass can read it at compile time, without building this renderer. */
+    public const string KEY = 'entity:find';
+
+    public string $key { get => self::KEY; }
 
     public function __construct(
         private readonly EntityAliasResolverInterface $resolver,

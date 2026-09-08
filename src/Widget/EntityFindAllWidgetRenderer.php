@@ -23,7 +23,10 @@ use Stringable;
  */
 final class EntityFindAllWidgetRenderer implements WidgetRendererInterface
 {
-    public string $key { get => 'entity:findAll'; }
+    /** Registry key. A constant so WidgetRegistryPass can read it at compile time, without building this renderer. */
+    public const string KEY = 'entity:findAll';
+
+    public string $key { get => self::KEY; }
 
     public function __construct(
         private readonly EntityAliasResolverInterface $resolver,
