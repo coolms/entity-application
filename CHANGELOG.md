@@ -10,6 +10,31 @@ major number means here.
 history when this file was created. Every entry after that is written in the
 same commit as the change it describes.
 
+## 2.0.0-alpha2 - 2026-09-09
+### Changed
+
+!! **This package is now `coolms/entity-application`, and its namespace nests under the
+domain root.**
+
+| before | after |
+|---|---|
+| `coolms/entity-module` | `coolms/entity-application` |
+| `CoolMS\EntityModule\` | `CoolMS\Entity\Application\` |
+
+`coolms/entity-module` is abandoned and points here. Update the requirement and the
+imports together; nothing else about the classes changed -- same names, same
+contracts, same requires.
+
+The rule underneath: a suffix names a superstructure and the absence of one
+names the subject, so the domain package keeps the root prefix and every layer
+above it carries a segment equal to its suffix.
+
+- Each widget renderer declares its key as a constant, so the key and the
+  service that answers to it cannot drift apart.
+- Comments, docblocks and changelogs are ascii and no longer name the phase that
+  built a thing.
+- Development-only files are export-ignored.
+
 ## 2.0.0-alpha1 - 2026-09-01
 
 **A pre-release. It carries no compatibility promise**, which is the honest
