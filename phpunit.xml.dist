@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    Standalone suite for coolms/entity-app.
+    Standalone suite for coolms/entity-application.
 
     The consuming application points its own `core` testsuite at this
     same `tests/` directory, so one set of files runs from both places and

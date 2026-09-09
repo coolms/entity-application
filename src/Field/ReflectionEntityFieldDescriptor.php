@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\EntityApp\Field;
+namespace CoolMS\Entity\Application\Field;
 
 use BackedEnum;
 use CoolMS\Core\Attribute\FieldMeta;

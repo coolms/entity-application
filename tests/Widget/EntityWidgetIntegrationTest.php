@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\EntityApp\Tests\Widget;
+namespace CoolMS\Entity\Application\Tests\Widget;
 
 use CoolMS\Dtmpl\DtmplEngine;
 use CoolMS\Dtmpl\Runtime\EntityWrapperFactory;
 use CoolMS\Dtmpl\Widget\WidgetRegistry;
 use CoolMS\Entity\Resolver\EntityAliasResolverInterface;
-use CoolMS\EntityApp\Widget\EntityFindAllWidgetRenderer;
-use CoolMS\EntityApp\Widget\EntityFindWidgetRenderer;
+use CoolMS\Entity\Application\Widget\EntityFindAllWidgetRenderer;
+use CoolMS\Entity\Application\Widget\EntityFindWidgetRenderer;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 

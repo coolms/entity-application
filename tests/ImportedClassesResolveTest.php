@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\EntityApp\Tests;
+namespace CoolMS\Entity\Application\Tests;
 
 use PHPUnit\Framework\TestCase;
 use RecursiveDirectoryIterator;

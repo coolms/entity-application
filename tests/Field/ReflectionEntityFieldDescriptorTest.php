@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\EntityApp\Tests\Field;
+namespace CoolMS\Entity\Application\Tests\Field;
 
 use CoolMS\Core\Attribute\FieldMeta;
-use CoolMS\EntityApp\Field\ReflectionEntityFieldDescriptor;
+use CoolMS\Entity\Application\Field\ReflectionEntityFieldDescriptor;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 

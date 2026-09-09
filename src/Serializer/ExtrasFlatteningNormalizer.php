@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\EntityApp\Serializer;
+namespace CoolMS\Entity\Application\Serializer;
 
 use CoolMS\Entity\Contract\ExtrasNormalizationExclusionInterface;
 use CoolMS\Entity\ExtrasProviderInterface;
@@ -26,8 +26,8 @@ readonly class ExtrasFlatteningNormalizer implements NormalizerInterface, Denorm
     /**
      * SIGNATURE LOCKED. Service is registered with explicit arguments and
      * `setAutowired(false)` in two coordinated places:
-     *   - CoolMS\EntityBundle\DependencyInjection\Extension::registerServices()
-     *   - CoolMS\EntityBundle\DependencyInjection\Compiler\ExtrasInfrastructurePass::process()
+     *   - CoolMS\Entity\Bundle\DependencyInjection\Extension::registerServices()
+     *   - CoolMS\Entity\Bundle\DependencyInjection\Compiler\ExtrasInfrastructurePass::process()
      *     re-asserts `$objectNormalizer` (bound to the framework
      *     `serializer.normalizer.object` ID, which is not autowire-resolvable
      *     by interface intersection) and `$aliasRegistry` after services.yaml

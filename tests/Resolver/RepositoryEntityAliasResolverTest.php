@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\EntityApp\Tests\Resolver;
+namespace CoolMS\Entity\Application\Tests\Resolver;
 
 use CoolMS\Entity\Registry\EntityAliasRegistryInterface;
 use CoolMS\Entity\Registry\RepositoryRegistryInterface;
-use CoolMS\EntityApp\Resolver\RepositoryEntityAliasResolver;
+use CoolMS\Entity\Application\Resolver\RepositoryEntityAliasResolver;
 use CoolMS\Rql\FilterNode;
 use CoolMS\Rql\FilterOp;
 use CoolMS\Rql\RqlParser;
