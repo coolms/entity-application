@@ -1,7 +1,7 @@
-# coolms/entity-module
+# coolms/entity-application
 
-[![CI](https://github.com/coolms/entity-module/actions/workflows/ci.yml/badge.svg)](https://github.com/coolms/entity-module/actions/workflows/ci.yml)
-[![Latest Version](https://img.shields.io/packagist/v/coolms/entity-module)](https://packagist.org/packages/coolms/entity-module)
+[![CI](https://github.com/coolms/entity-application/actions/workflows/ci.yml/badge.svg)](https://github.com/coolms/entity-application/actions/workflows/ci.yml)
+[![Latest Version](https://img.shields.io/packagist/v/coolms/entity-application)](https://packagist.org/packages/coolms/entity-application)
 [![PHP](https://img.shields.io/badge/php-%E2%89%A5%208.5-777bb4)](https://www.php.net/releases/8.5/en.php)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
@@ -25,12 +25,12 @@ Requires the virtual package `coolms/entity-persistence-implementation`, which
 ## Installation
 
 ```bash
-composer require coolms/entity-module coolms/entity-doctrine
+composer require coolms/entity-application coolms/entity-doctrine
 ```
 
 > **The adapter is part of the install, not a second step.** This package
 > requires the virtual `coolms/entity-persistence-implementation`, and only an
-> adapter provides it, so `composer require coolms/entity-module` on its own
+> adapter provides it, so `composer require coolms/entity-application` on its own
 > cannot resolve — Composer reports that the virtual package "could not be found
 > in any version", which reads like a broken package rather than a missing
 > argument.

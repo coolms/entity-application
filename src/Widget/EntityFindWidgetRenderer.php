@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\EntityModule\Widget;
+namespace CoolMS\Entity\Application\Widget;
 
 use CoolMS\Dtmpl\Runtime\EntityWrapperFactory;
 use CoolMS\Dtmpl\Widget\WidgetRendererInterface;
@@ -22,7 +22,10 @@ use Stringable;
  */
 final class EntityFindWidgetRenderer implements WidgetRendererInterface
 {
-    public string $key { get => 'entity:find'; }
+    /** Registry key. A constant so WidgetRegistryPass can read it at compile time, without building this renderer. */
+    public const string KEY = 'entity:find';
+
+    public string $key { get => self::KEY; }
 
     public function __construct(
         private readonly EntityAliasResolverInterface $resolver,

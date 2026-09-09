@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\EntityModule;
+namespace CoolMS\Entity\Application;
 
 use CoolMS\Entity\Registry\RepositoryRegistryInterface;
 use CoolMS\Rql\RqlRepositoryInterface;

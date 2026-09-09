@@ -1,12 +1,12 @@
 # Changelog
 
-All notable changes to `coolms/entity-module` are recorded here.
+All notable changes to `coolms/entity-application` are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning is described in `CONTRIBUTING.md` -- read it before assuming what a
 major number means here.
 
-⚠️ Entries dated before 2026-09-01 were **reconstructed** from tags and commit
+!! Entries dated before 2026-09-01 were **reconstructed** from tags and commit
 history when this file was created. Every entry after that is written in the
 same commit as the change it describes.
 
@@ -26,24 +26,24 @@ Composer will not install it under default stability. Set
 in your root `composer.json`, then:
 
 ```
-composer require coolms/entity-module:^2.0 coolms/entity-doctrine:^2.0
+composer require coolms/entity-application:^2.0 coolms/entity-doctrine:^2.0
 ```
 
 `prefer-stable` keeps every other dependency of yours on its newest stable
 release, so this loosening applies to what actually needs it and nothing else.
 
-⚠️ **The adapter is part of the command, not an extra.** `coolms/entity-
+!! **The adapter is part of the command, not an extra.** `coolms/entity-
 module` requires a persistence implementation, which is a virtual package:
 nothing provides it until you choose an implementation, and Composer reports
 the virtual name, which reads like a broken package rather than a missing
 argument.
 
-⚠️ **A per-package flag is not enough here.** `composer require
-coolms/entity-module:^2.0@alpha` admits the alpha of the package it names and
+!! **A per-package flag is not enough here.** `composer require
+coolms/entity-application:^2.0@alpha` admits the alpha of the package it names and
 **nothing behind it**, so the siblings this one pulls in still fail to resolve.
 Composer reports it against the sibling, not against what you asked for.
 
-A bare `composer require coolms/entity-module` does not install the wrong
+A bare `composer require coolms/entity-application` does not install the wrong
 thing quietly -- it refuses, naming `coolms/entity-persistence-
 implementation`. That is a virtual package, so the message reads like a broken
 dependency rather than a missing argument.
@@ -55,14 +55,14 @@ installs one, at which point the release policy resumes.
 
 ### Fixed: the installation command in the readme names the adapter
 
-`composer require coolms/entity-module` on its own cannot resolve. This package
+`composer require coolms/entity-application` on its own cannot resolve. This package
 requires a virtual persistence-implementation package, and only an adapter
 provides one, so Composer reports that the virtual package "could not be found
 in any version" -- which reads like a broken package rather than a missing
 argument.
 
 The readme now leads with the command that works:
-`composer require coolms/entity-module coolms/entity-doctrine`.
+`composer require coolms/entity-application coolms/entity-doctrine`.
 
 ### Changed: sibling constraints move to the v2 generation
 
@@ -71,7 +71,7 @@ The readme now leads with the command that works:
 - `coolms/entity-persistence-implementation`: `^1.0` to `^2.0`
 - `coolms/entity-doctrine` (development): `^1.0` to `^2.0`
 
-⚠️ **This is a minor, not a major, and that is deliberate.** This package
+!! **This is a minor, not a major, and that is deliberate.** This package
 reached major 2 before the platform adopted a shared generation number, and it
 did so while still requiring major 1 of its siblings. The v2 generation of those
 siblings is **code-identical** to v1 -- their major moved to mark the
