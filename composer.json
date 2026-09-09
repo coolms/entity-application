@@ -1,5 +1,5 @@
 {
-    "name": "coolms/entity-module",
+    "name": "coolms/entity-app",
     "description": "Platform composition layer over coolms/entity: reflection field extraction, the tagged repository registry, the extras-flattening normalizer and the entity:find widget renderers",
     "type": "library",
     "license": "MIT",
@@ -32,12 +32,12 @@
     },
     "autoload": {
         "psr-4": {
-            "CoolMS\\EntityModule\\": "src/"
+            "CoolMS\\EntityApp\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "CoolMS\\EntityModule\\Tests\\": "tests/"
+            "CoolMS\\EntityApp\\Tests\\": "tests/"
         }
     },
     "scripts": {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\EntityModule\Resolver;
+namespace CoolMS\EntityApp\Resolver;
 
 use CoolMS\Entity\Registry\EntityAliasRegistryInterface;
 use CoolMS\Entity\Registry\RepositoryRegistryInterface;

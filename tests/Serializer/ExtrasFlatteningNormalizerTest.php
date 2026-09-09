@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\EntityModule\Tests\Serializer;
+namespace CoolMS\EntityApp\Tests\Serializer;
 
 use ArrayAccess;
 use CoolMS\Entity\ExtrasProviderInterface;
 use CoolMS\Entity\Registry\EntityAliasRegistry;
 use CoolMS\Entity\Service\EntitySchemaLookup;
 use CoolMS\Entity\Traits\ExtrasProviderTrait;
-use CoolMS\EntityModule\Serializer\ExtrasFlatteningNormalizer;
+use CoolMS\EntityApp\Serializer\ExtrasFlatteningNormalizer;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;

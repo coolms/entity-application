@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\EntityModule\Serializer;
+namespace CoolMS\EntityApp\Serializer;
 
 use CoolMS\Entity\Contract\ExtrasNormalizationExclusionInterface;
 use CoolMS\Entity\ExtrasProviderInterface;

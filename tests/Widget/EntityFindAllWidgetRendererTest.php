@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\EntityModule\Tests\Widget;
+namespace CoolMS\EntityApp\Tests\Widget;
 
 use CoolMS\Dtmpl\Runtime\EntityCollection;
 use CoolMS\Entity\Resolver\EntityAliasResolverInterface;
-use CoolMS\EntityModule\Widget\EntityFindAllWidgetRenderer;
+use CoolMS\EntityApp\Widget\EntityFindAllWidgetRenderer;
 use PHPUnit\Framework\TestCase;
 
 /**

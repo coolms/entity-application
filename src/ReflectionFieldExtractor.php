@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\EntityModule;
+namespace CoolMS\EntityApp;
 
 use CoolMS\Entity\Registry\FieldExtractorInterface;
 use DateTimeInterface;

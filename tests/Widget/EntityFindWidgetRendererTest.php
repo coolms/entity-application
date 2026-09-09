@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\EntityModule\Tests\Widget;
+namespace CoolMS\EntityApp\Tests\Widget;
 
 use CoolMS\Dtmpl\Runtime\EntityWrapper;
 use CoolMS\Dtmpl\Runtime\EntityWrapperFactory;
 use CoolMS\Entity\Resolver\EntityAliasResolverInterface;
-use CoolMS\EntityModule\Widget\EntityFindWidgetRenderer;
+use CoolMS\EntityApp\Widget\EntityFindWidgetRenderer;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 

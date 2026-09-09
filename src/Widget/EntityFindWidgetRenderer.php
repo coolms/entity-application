@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\EntityModule\Widget;
+namespace CoolMS\EntityApp\Widget;
 
 use CoolMS\Dtmpl\Runtime\EntityWrapperFactory;
 use CoolMS\Dtmpl\Widget\WidgetRendererInterface;
