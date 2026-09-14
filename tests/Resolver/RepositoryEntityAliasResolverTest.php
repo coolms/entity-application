@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace CoolMS\Entity\Application\Tests\Resolver;
 
+use CoolMS\Entity\Application\Resolver\RepositoryEntityAliasResolver;
 use CoolMS\Entity\Registry\EntityAliasRegistryInterface;
 use CoolMS\Entity\Registry\RepositoryRegistryInterface;
-use CoolMS\Entity\Application\Resolver\RepositoryEntityAliasResolver;
 use CoolMS\Rql\FilterNode;
 use CoolMS\Rql\FilterOp;
 use CoolMS\Rql\RqlParser;

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace CoolMS\Entity\Application\Tests\Widget;
 
 use CoolMS\Dtmpl\Runtime\EntityCollection;
-use CoolMS\Entity\Resolver\EntityAliasResolverInterface;
 use CoolMS\Entity\Application\Widget\EntityFindAllWidgetRenderer;
+use CoolMS\Entity\Resolver\EntityAliasResolverInterface;
 use PHPUnit\Framework\TestCase;
 
 /**
