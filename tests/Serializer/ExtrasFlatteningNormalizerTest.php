@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace CoolMS\Entity\Application\Tests\Serializer;
 
 use ArrayAccess;
+use CoolMS\Entity\Application\Serializer\ExtrasFlatteningNormalizer;
 use CoolMS\Entity\ExtrasProviderInterface;
 use CoolMS\Entity\Registry\EntityAliasRegistry;
 use CoolMS\Entity\Service\EntitySchemaLookup;
 use CoolMS\Entity\Traits\ExtrasProviderTrait;
-use CoolMS\Entity\Application\Serializer\ExtrasFlatteningNormalizer;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;

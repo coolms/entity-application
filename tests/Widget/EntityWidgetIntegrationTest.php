@@ -7,9 +7,9 @@ namespace CoolMS\Entity\Application\Tests\Widget;
 use CoolMS\Dtmpl\DtmplEngine;
 use CoolMS\Dtmpl\Runtime\EntityWrapperFactory;
 use CoolMS\Dtmpl\Widget\WidgetRegistry;
-use CoolMS\Entity\Resolver\EntityAliasResolverInterface;
 use CoolMS\Entity\Application\Widget\EntityFindAllWidgetRenderer;
 use CoolMS\Entity\Application\Widget\EntityFindWidgetRenderer;
+use CoolMS\Entity\Resolver\EntityAliasResolverInterface;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
