@@ -15,6 +15,10 @@
             "name": "Dmitry Popov"
         }
     ],
+    "support": {
+        "issues": "https://github.com/coolms/entity-application/issues",
+        "source": "https://github.com/coolms/entity-application"
+    },
     "require": {
         "php": "^8.5",
         "coolms/core": "^2.0",
