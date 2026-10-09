@@ -10,6 +10,31 @@ major number means here.
 history when this file was created. Every entry after that is written in the
 same commit as the change it describes.
 
+## Unreleased
+
+### Changed: the entity widgets read only what the read guard allows
+
+`RepositoryEntityAliasResolver` and the `entity:find` / `entity:findAll` widget
+renderers take a `CoolMS\Entity\Security\RecordReadGuardInterface` (coolms/entity)
+as their last constructor argument:
+
+- before the query runs, every field a template's filter or sort names must be
+  one the guard lets a predicate use for that class (`predicateFieldsFor()`,
+  matched as written, so a JSON field is listed as `extras.<key>`); otherwise
+  `PredicateNotAllowed` is thrown, naming the alias and the field, never a value;
+- a record the guard refuses is left out: `find()` answers null, exactly as for
+  no match, and `findAll()` drops it;
+- the widgets hand each record out through coolms/dtmpl's guarded wrapper, so a
+  template reads only the allowed fields, and a related record it steps into is
+  asked of the same guard.
+
+**Breaking:** with no guard given, the default refuses every record and every
+predicate, so a host that builds these classes as before renders every entity
+widget as empty. Pass the host's guard; a bundle that wires them provides the
+default and lets the host override it.
+
+Requires coolms/dtmpl ^2.3.0-alpha2, for `EntityWrapperFactory::wrap(object, ?Closure)`.
+
 ## 2.0.0-alpha3 - 2026-10-07
 
 ### Added
