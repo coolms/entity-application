@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace CoolMS\Entity\Application\Tests\Resolver;
 
 use CoolMS\Entity\Application\Resolver\RepositoryEntityAliasResolver;
+use CoolMS\Entity\Application\Tests\Fixture\GrantsTheseFields;
 use CoolMS\Entity\Registry\EntityAliasRegistryInterface;
 use CoolMS\Entity\Registry\RepositoryRegistryInterface;
 use CoolMS\Rql\FilterNode;
@@ -229,6 +230,7 @@ final class RepositoryEntityAliasResolverTest extends TestCase
             $aliasRegistry,
             $repoRegistry,
             new RqlParser(),
+            new GrantsTheseFields(predicates: ['id', 'amount']),
         );
     }
 }

@@ -6,6 +6,7 @@ namespace CoolMS\Entity\Application\Tests\Widget;
 
 use CoolMS\Dtmpl\Runtime\EntityWrapper;
 use CoolMS\Dtmpl\Runtime\EntityWrapperFactory;
+use CoolMS\Entity\Application\Tests\Fixture\GrantsTheseFields;
 use CoolMS\Entity\Application\Widget\EntityFindWidgetRenderer;
 use CoolMS\Entity\Resolver\EntityAliasResolverInterface;
 use PHPUnit\Framework\TestCase;
@@ -76,6 +77,7 @@ final class EntityFindWidgetRendererTest extends TestCase
         return new EntityFindWidgetRenderer(
             $resolver,
             new EntityWrapperFactory(PropertyAccess::createPropertyAccessor()),
+            new GrantsTheseFields(fields: ['name']),
         );
     }
 }

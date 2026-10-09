@@ -7,9 +7,18 @@ namespace CoolMS\Entity\Application\Resolver;
 use CoolMS\Entity\Registry\EntityAliasRegistryInterface;
 use CoolMS\Entity\Registry\RepositoryRegistryInterface;
 use CoolMS\Entity\Resolver\EntityAliasResolverInterface;
+use CoolMS\Entity\Security\NoRecordIsReadable;
+use CoolMS\Entity\Security\RecordReadGuardInterface;
+use CoolMS\Rql\AndNode;
+use CoolMS\Rql\FilterNode;
+use CoolMS\Rql\OrNode;
 use CoolMS\Rql\RqlContext;
 use CoolMS\Rql\RqlParser;
 use CoolMS\Rql\RqlQuery;
+
+use function array_filter;
+use function array_values;
+use function in_array;
 
 /**
  * Concrete `EntityAliasResolverInterface` that fetches entities
@@ -24,6 +33,18 @@ use CoolMS\Rql\RqlQuery;
  * Returns `null` / `[]` when the alias is unknown or the entity's
  * class has no registered repository, so widget callers can treat
  * absence uniformly.
+ *
+ * What a template may read is the {@see RecordReadGuardInterface}'s
+ * to decide, asked twice:
+ *   - before the query runs, every field the filter or the sort names
+ *     must be one the guard lets a predicate use for that class
+ *     (`predicateFieldsFor()`, matched exactly as written, so
+ *     `extras.color` must be listed as such), or
+ *     {@see PredicateNotAllowed} is thrown, naming the field and never
+ *     a value;
+ *   - after it, a record the guard refuses is left out: `find()`
+ *     answers null, exactly as for no match, and `findAll()` drops it.
+ * With no guard given, none is readable and no predicate is allowed.
  */
 final readonly class RepositoryEntityAliasResolver implements EntityAliasResolverInterface
 {
@@ -37,6 +58,7 @@ final readonly class RepositoryEntityAliasResolver implements EntityAliasResolve
         private EntityAliasRegistryInterface $aliasRegistry,
         private RepositoryRegistryInterface $repositories,
         private RqlParser $rqlParser,
+        private RecordReadGuardInterface $guard = new NoRecordIsReadable(),
     ) {
     }
 
@@ -47,9 +69,10 @@ final readonly class RepositoryEntityAliasResolver implements EntityAliasResolve
             return null;
         }
         $query = $this->buildRqlQuery($rqlFilter, forcedLimit: 1);
-        $result = $this->repositories->get($fqcn)->findByRql($query, $this->context());
+        $this->refuseUnallowedPredicates($alias, $fqcn, $query);
+        $record = $this->repositories->get($fqcn)->findByRql($query, $this->context())->items[0] ?? null;
 
-        return $result->items[0] ?? null;
+        return null !== $record && null !== $this->guard->fieldsFor($record) ? $record : null;
     }
 
     public function findAll(string $alias, ?string $rqlFilter = null): array
@@ -59,9 +82,49 @@ final readonly class RepositoryEntityAliasResolver implements EntityAliasResolve
             return [];
         }
         $query = $this->buildRqlQuery($rqlFilter, defaultLimit: self::FIND_ALL_DEFAULT_LIMIT);
-        $result = $this->repositories->get($fqcn)->findByRql($query, $this->context());
+        $this->refuseUnallowedPredicates($alias, $fqcn, $query);
+        $records = $this->repositories->get($fqcn)->findByRql($query, $this->context())->items;
 
-        return $result->items;
+        return array_values(array_filter($records, fn (object $record): bool => null !== $this->guard->fieldsFor($record)));
+    }
+
+    /** @param class-string $fqcn */
+    private function refuseUnallowedPredicates(string $alias, string $fqcn, RqlQuery $query): void
+    {
+        $fields = $this->filterFields($query->filters);
+        foreach ($query->sort as $sort) {
+            $fields[] = $sort->field;
+        }
+        if ([] === $fields) {
+            return;
+        }
+        $allowed = $this->guard->predicateFieldsFor($fqcn);
+        foreach ($fields as $field) {
+            if (!in_array($field, $allowed, true)) {
+                throw PredicateNotAllowed::field($alias, $field);
+            }
+        }
+    }
+
+    /**
+     * @param array<FilterNode|OrNode|AndNode> $nodes
+     *
+     * @return list<string>
+     */
+    private function filterFields(array $nodes): array
+    {
+        $fields = [];
+        foreach ($nodes as $node) {
+            if ($node instanceof FilterNode) {
+                $fields[] = $node->field;
+                continue;
+            }
+            foreach ($this->filterFields($node->nodes) as $field) {
+                $fields[] = $field;
+            }
+        }
+
+        return $fields;
     }
 
     private function buildRqlQuery(

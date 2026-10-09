@@ -7,6 +7,7 @@ namespace CoolMS\Entity\Application\Tests\Widget;
 use CoolMS\Dtmpl\DtmplEngine;
 use CoolMS\Dtmpl\Runtime\EntityWrapperFactory;
 use CoolMS\Dtmpl\Widget\WidgetRegistry;
+use CoolMS\Entity\Application\Tests\Fixture\GrantsTheseFields;
 use CoolMS\Entity\Application\Widget\EntityFindAllWidgetRenderer;
 use CoolMS\Entity\Application\Widget\EntityFindWidgetRenderer;
 use CoolMS\Entity\Resolver\EntityAliasResolverInterface;
@@ -73,8 +74,9 @@ final class EntityWidgetIntegrationTest extends TestCase
     {
         $factory = new EntityWrapperFactory(PropertyAccess::createPropertyAccessor());
         $registry = new WidgetRegistry();
-        $registry->register(new EntityFindWidgetRenderer($resolver, $factory));
-        $registry->register(new EntityFindAllWidgetRenderer($resolver));
+        $guard = new GrantsTheseFields(fields: ['name', 'total']);
+        $registry->register(new EntityFindWidgetRenderer($resolver, $factory, $guard));
+        $registry->register(new EntityFindAllWidgetRenderer($resolver, $factory, $guard));
 
         return new DtmplEngine(widgets: $registry);
     }
