@@ -33,6 +33,15 @@ predicate, so a host that builds these classes as before renders every entity
 widget as empty. Pass the host's guard; a bundle that wires them provides the
 default and lets the host override it.
 
+**Breaking:** `EntityFindAllWidgetRenderer` also takes an `EntityWrapperFactory`
+as a required second argument, as `EntityFindWidgetRenderer` already did. A host
+that builds it by hand with the resolver alone now gets an error rather than an
+empty widget; an autowired host gets the factory coolms/dtmpl-bundle registers.
+
+The result limit applies before the guard: `find()` answers null when its one
+match is refused, even if a later record would be readable, and `findAll()` can
+return fewer records than its limit.
+
 Requires coolms/dtmpl ^2.3.0-alpha2, for `EntityWrapperFactory::wrap(object, ?Closure)`.
 
 ## 2.0.0-alpha3 - 2026-10-07

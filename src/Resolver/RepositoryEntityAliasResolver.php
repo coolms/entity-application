@@ -44,6 +44,9 @@ use function in_array;
  *     a value;
  *   - after it, a record the guard refuses is left out: `find()`
  *     answers null, exactly as for no match, and `findAll()` drops it.
+ * The limit applies before the guard: `find()` answers null when its
+ * one match is refused, even if a later record would be readable, and
+ * `findAll()` can return fewer records than its limit.
  * With no guard given, none is readable and no predicate is allowed.
  */
 final readonly class RepositoryEntityAliasResolver implements EntityAliasResolverInterface
